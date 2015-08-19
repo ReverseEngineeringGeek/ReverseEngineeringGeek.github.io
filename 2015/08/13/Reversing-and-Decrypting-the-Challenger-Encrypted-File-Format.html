@@ -103,7 +103,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Next we can see a button labelled "Encrypt/Decrypt file&#8230;&#8203;". When we click it we get a open file dialogue. I wonder if that&#8217;s a secure erase or just a deletion, but let&#8217;s not go off on to a tangent.</p>
+<p>Next we can see a button labelled "Encrypt/Decrypt file&#8230;&#8203;". When we click it we get a open file dialogue. I wonder if that&#8217;s a secure erase or just a deletion, but let&#8217;s not go off off topic. Next we see that challenger lets us select a file to 'Encrypt/Decrypt'.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -139,8 +139,8 @@
 </div>
 <div class="paragraph">
 <p>There are two ReadFile&#8217;s after CreateFileW opens the file.
-* 00250192 The first only reads a hardcoded 68 bytes (the header).
-* the second reads 3 bytes - the file extention at the end of the header.</p>
+The first one only reads a hardcoded 68 bytes (the header).
+The second reads 3 bytes - the file extention at the end of the header.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -149,16 +149,11 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="/images/chall6.57.png" alt="chall6.57.png">
+<img src="/images/chall7.57.png" alt="chall7.57.png">
 </div>
 </div>
 <div class="paragraph">
 <p>Next we hit a CreateFileW which creates the new plaintext file. This is based on the ciphertext file&#8217;s path+name with the .cha file extension (or .ch2) removed and the original extension ('exe' in this case) on the end (if it isn&#8217;t already).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="/images/chall8.58.png" alt="chall8.58.png">
-</div>
 </div>
 <div class="paragraph">
 <p>After this we get a third ReadFile at 002509F4. This ReadFile fills the buffer with the ciphertext from the file.</p>
@@ -185,7 +180,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>We breakpoint on another function, this time the asm is copying a byte from the ciphertext into ecx and xoring it with a value from an a pointer to what may be a table plus an offset from another table This could be the cipher. Immunity&#8217;s searchcrypt pycommand still gives us no recognised crypto signatures, however.</p>
+<p>We breakpoint on another function, this time the asm is copying a byte from the ciphertext into ecx and xoring it with a value from an a pointer to what may be a table plus an offset from another table. This could be the cipher. Immunity&#8217;s searchcrypt pycommand still gives us no recognised crypto signatures, however.</p>
 </div>
 <div class="paragraph">
 <p>I noted that both of these functions return to the same function, and that function is the same function that makes the call to ReadFile to get the ciphertext.</p>
@@ -200,6 +195,18 @@
 <div class="content">
 <img src="/images/challx1.140.png" alt="challx1.140.png">
 </div>
+</div>
+<div class="paragraph">
+<p>We can extract that plaintext from the memory of the program using immunity debugger (or olly).</p>
+</div>
+
+<div class="imageblock">
+<div class="content">
+<img src="/images/challx1.141.png" alt="challx1.141.png">
+</div>
+</div>
+<div class="paragraph">
+<p>And there we have it. we have extracted the plain text file form the program and named it PEiD.recovered.exe.</p>
 </div>
 </div>
 </div>
