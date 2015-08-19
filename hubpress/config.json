@@ -4,7 +4,14 @@
     "repositoryName": "reverseengineeringgeek.github.io",
     "branch": "master"
   },
+  "site": {
+    "title":"",
+    "description":"",
+    "url":"http://reverseengineeringgeek.github.io"
+  },
+  "socialnetwork":{},
   "theme": {
-    "name": "Casper"
+    "name": "Casper",
+    "url":"http://reverseengineeringgeek.github.io/themes/Casper"
   }
 }
