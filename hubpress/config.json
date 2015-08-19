@@ -5,8 +5,8 @@
     "branch": "master"
   },
   "site": {
-    "title":"",
-    "description":"",
+    "title":"Reverse Engineering Geek",
+    "description":"Hi! I'm a big Reverse Engineering Geek.\nI love IT and I made this blog as a portfolio for reverse engineering contracts.\nI hope you find evidence here that I have the skills to carry out the reverse engineering work that you need.\nCan't wait to work for you!",
     "url":"http://reverseengineeringgeek.github.io"
   },
   "socialnetwork":{},
